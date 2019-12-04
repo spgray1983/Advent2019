@@ -1,8 +1,7 @@
 #AOC Day2
 
 import math
-
-
+import copy
 
 def Convert(string):
     li = list(string.split(","))
@@ -11,7 +10,8 @@ with open("./day2_input.txt", "r") as file:
    for line in file:
       data=(Convert(line))
 data1 = [int(i) for i in data]
-newdata = data1
+newdata = copy.deepcopy(data1)
+print(newdata[0:4])
 def part1():
     posit = 0
     data1[1]=12
@@ -32,15 +32,13 @@ def part1():
             value = data1[temp1] * data1[temp2]
             data1[temp3] = value
             posit += 4
-    print(data1[0])
 
 def part2():
-    #posit = 0
     noun = [x for x in range(100)]
     verb = [x for x in range(100)]
     for i in noun:
         for j in verb:
-            data1 = newdata
+            data1 = copy.deepcopy(newdata)
             posit=0
             data1[1]=i
             data1[2]=j
@@ -59,15 +57,11 @@ def part2():
                     value = data1[temp1] * data1[temp2]
                     data1[temp3] = value
                     posit += 4
-            print(data1[0])
             if data1[0] == 19690720:
                 print (i)
                 print (j)
-            else: print('try again')
-            #    break
-            #else: data1 = newdata
+                print (100*i+j)
+                break
 
-
-#part1()
+part1()
 part2()
-#def partone():
